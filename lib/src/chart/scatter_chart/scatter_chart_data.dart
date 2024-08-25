@@ -28,6 +28,8 @@ class ScatterChartData extends AxisChartData with EquatableMixin {
   ///
   /// You can annotate some regions with a highlight color using [rangeAnnotations].
   ///
+  /// You can draw some extra lines using [extraLinesData].
+  ///
   /// You can modify [scatterTouchData] to customize touch behaviors and responses.
   ///
   /// You can show some tooltipIndicators (a popup with an information)
@@ -43,6 +45,7 @@ class ScatterChartData extends AxisChartData with EquatableMixin {
     FlGridData? gridData,
     super.borderData,
     super.rangeAnnotations = const RangeAnnotations(),
+    super.extraLinesData = const ExtraLinesData(),
     double? minX,
     double? maxX,
     super.baselineX,
@@ -100,6 +103,8 @@ class ScatterChartData extends AxisChartData with EquatableMixin {
         titlesData: FlTitlesData.lerp(a.titlesData, b.titlesData, t),
         rangeAnnotations:
             RangeAnnotations.lerp(a.rangeAnnotations, b.rangeAnnotations, t),
+        extraLinesData:
+            ExtraLinesData.lerp(a.extraLinesData, b.extraLinesData, t),
         scatterTouchData: b.scatterTouchData,
         showingTooltipIndicators: lerpIntList(
           a.showingTooltipIndicators,
@@ -133,6 +138,7 @@ class ScatterChartData extends AxisChartData with EquatableMixin {
     List<ScatterSpot>? scatterSpots,
     FlTitlesData? titlesData,
     RangeAnnotations? rangeAnnotations,
+    ExtraLinesData? extraLinesData,
     ScatterTouchData? scatterTouchData,
     List<int>? showingTooltipIndicators,
     FlGridData? gridData,
@@ -151,6 +157,7 @@ class ScatterChartData extends AxisChartData with EquatableMixin {
       scatterSpots: scatterSpots ?? this.scatterSpots,
       titlesData: titlesData ?? this.titlesData,
       rangeAnnotations: rangeAnnotations ?? this.rangeAnnotations,
+      extraLinesData: extraLinesData ?? this.extraLinesData,
       scatterTouchData: scatterTouchData ?? this.scatterTouchData,
       showingTooltipIndicators:
           showingTooltipIndicators ?? this.showingTooltipIndicators,
@@ -177,6 +184,7 @@ class ScatterChartData extends AxisChartData with EquatableMixin {
         gridData,
         titlesData,
         rangeAnnotations,
+        extraLinesData,
         minX,
         maxX,
         baselineX,
